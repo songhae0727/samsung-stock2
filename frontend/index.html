@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>삼성전자 AI 주가 예측</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-logo">📈 삼성전자 AI 예측</div>
+  <div class="nav-badge" id="update-badge">로딩 중...</div>
+</nav>
+
+<div class="hero">
+  <div class="card">
+    <div class="card-label">현재가 · 005930.KS</div>
+    <div class="card-price" id="current-price">--</div>
+    <div class="card-change" id="current-change">--</div>
+    <div class="card-sub" id="updated-at">--</div>
+  </div>
+  <div class="card card-predict">
+    <div class="card-label">🤖 AI 7일 예측</div>
+    <div class="card-price" id="predict-price">--</div>
+    <div class="card-change" id="predict-change">--</div>
+    <div class="card-sub">내일 ~ 7일 후 범위 기준</div>
+  </div>
+</div>
+
+<div class="chart-card">
+  <div class="chart-header">
+    <div class="chart-title">주가 추이 및 예측</div>
+    <div class="chart-tabs">
+      <div class="tab active" data-days="30">1개월</div>
+      <div class="tab" data-days="90">3개월</div>
+      <div class="tab" data-days="365">1년</div>
+    </div>
+  </div>
+  <div class="chart-container">
+    <canvas id="price-chart"></canvas>
+  </div>
+</div>
+
+<div class="stats-grid">
+  <div class="stat-card">
+    <div class="stat-label">모델 정확도 (1일)</div>
+    <div class="stat-value up" id="acc-1d">--</div>
+    <div class="stat-sub">최근 검증 기준</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-label">예측 범위</div>
+    <div class="stat-value">1 ~ 7일</div>
+    <div class="stat-sub">단기 LSTM 모델</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-label">학습 데이터</div>
+    <div class="stat-value">2년</div>
+    <div class="stat-sub">거래일 기준</div>
+  </div>
+</div>
+
+<div class="forecast-card">
+  <div class="section-title">📅 7일 예측 상세</div>
+  <div class="ft-header">
+    <div>날짜</div><div>예측 주가</div><div>변동</div><div>신뢰도</div>
+  </div>
+  <div id="forecast-rows"></div>
+</div>
+
+<div class="accuracy-card">
+  <div class="section-title">📊 모델 성능 지표</div>
+  <div class="acc-row">
+    <div class="acc-label">1일 예측 정확도</div>
+    <div class="acc-bar-wrap"><div class="acc-bar-fill" id="bar-1d" style="width:0%"></div></div>
+    <div class="acc-val" id="val-1d">--%</div>
+  </div>
+  <div class="acc-row">
+    <div class="acc-label">3일 예측 정확도</div>
+    <div class="acc-bar-wrap"><div class="acc-bar-fill" id="bar-3d" style="width:0%"></div></div>
+    <div class="acc-val" id="val-3d">--%</div>
+  </div>
+  <div class="acc-row">
+    <div class="acc-label">7일 예측 정확도</div>
+    <div class="acc-bar-wrap"><div class="acc-bar-fill" id="bar-7d" style="width:0%"></div></div>
+    <div class="acc-val" id="val-7d">--%</div>
+  </div>
+</div>
+
+<div class="disclaimer">
+  ⚠️ 이 예측은 AI 모델의 참고 정보입니다. 실제 투자 결정에 활용 시 발생하는 손실에 대해 책임지지 않습니다.
+</div>
+
+<script src="config.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
